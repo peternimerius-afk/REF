@@ -4,6 +4,14 @@ All notable changes to REF will be documented in this file.
 
 ## [0.1.0] - Draft
 
+### Added in Commit 0007
+
+- Descriptive lint titles and recommendations.
+- More readable console lint summary.
+- Excel report output using `--excel-out`.
+- Excel report sheets: Summary, Lint Findings, Requirements, Lint Legend.
+- Report unit test.
+
 ### Added in Commit 0006B
 
 - Conservative Excel requirement detection.

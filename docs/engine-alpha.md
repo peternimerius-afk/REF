@@ -2,7 +2,7 @@
 
 **Version:** 0.1.0-alpha
 
-Commit 0006B improves the first real Excel test result.
+Commit 0007 improves readability and reporting.
 
 ## Implemented
 
@@ -11,21 +11,22 @@ Commit 0006B improves the first real Excel test result.
 - Word import
 - Markdown/Text import
 - Conservative requirement detection
-- Noise filtering for Excel ID cells and section headings
-- Basic lint summary
-- Console report
+- Basic linting with descriptive titles
+- Console lint summary with descriptions
+- Excel report output
 
-## Not implemented yet
+## Excel report sheets
 
-- Capability mapping
-- JSON reports
-- Gap analysis
-- Normalization
-- Export
+The generated workbook contains:
+
+- `Summary`
+- `Lint Findings`
+- `Requirements`
+- `Lint Legend`
 
 ## Run
 
 ```powershell
 cd engine
-python -m ref_engine.cli analyze --input "..\AI.xlsx"
+python -m ref_engine.cli analyze --input "..\AI.xlsx" --excel-out "..\AI_REF_Report.xlsx"
 ```
