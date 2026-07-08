@@ -4,6 +4,17 @@ All notable changes to REF will be documented in this file.
 
 ## [0.1.0] - Draft
 
+### Added in Commit 0008
+
+- Interactive REF review workbook.
+- Requirement Review worksheet with decisions and reviewer revision column.
+- Final Output Preview worksheet.
+- Version History worksheet.
+- Change Log worksheet.
+- Project Information worksheet.
+- CLI option `--review-out`.
+- Review workflow documentation.
+
 ### Added in Commit 0007
 
 - Descriptive lint titles and recommendations.

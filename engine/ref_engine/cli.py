@@ -4,6 +4,7 @@ import argparse
 
 from .analyzer import analyze_file
 from .report import print_console_report, write_excel_report
+from .review_workbook import write_review_workbook
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -42,6 +43,30 @@ def main(argv: list[str] | None = None) -> int:
         help="Write a structured Excel report to this path",
     )
 
+    analyze_parser.add_argument(
+        "--review-out",
+        required=False,
+        help="Write an interactive REF review workbook to this path",
+    )
+
+    analyze_parser.add_argument(
+        "--review-version",
+        default="0.1",
+        help="Review workbook version",
+    )
+
+    analyze_parser.add_argument(
+        "--final-version",
+        default="",
+        help="Final RFP version, if applicable",
+    )
+
+    analyze_parser.add_argument(
+        "--project-name",
+        default="",
+        help="Project name for review workbook metadata",
+    )
+
     args = parser.parse_args(argv)
 
     if args.command == "analyze":
@@ -51,6 +76,16 @@ def main(argv: list[str] | None = None) -> int:
         if args.excel_out:
             write_excel_report(report, args.excel_out)
             print(f"Excel report written to: {args.excel_out}")
+
+        if args.review_out:
+            write_review_workbook(
+                report,
+                args.review_out,
+                review_version=args.review_version,
+                final_version=args.final_version,
+                project_name=args.project_name,
+            )
+            print(f"Review workbook written to: {args.review_out}")
 
         return 0
 

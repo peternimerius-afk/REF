@@ -2,6 +2,14 @@ from __future__ import annotations
 
 from collections import Counter
 from pathlib import Path
+from openpyxl.styles import (
+    PatternFill,
+    Font,
+    Alignment,
+    Border,
+    Side,
+)
+from openpyxl.utils import get_column_letter
 
 from .linter import lint_catalog
 from .models import AnalysisReport
@@ -47,8 +55,6 @@ def print_console_report(report: AnalysisReport, max_examples: int = 20) -> None
 
 def write_excel_report(report: AnalysisReport, path: str | Path) -> None:
     from openpyxl import Workbook
-    from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
-    from openpyxl.utils import get_column_letter
 
     output_path = Path(path)
     workbook = Workbook()
