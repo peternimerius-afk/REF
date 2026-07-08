@@ -1,0 +1,169 @@
+version: 0.1.0
+status: draft
+
+capabilities:
+  - id: availability
+    name: Availability
+    category: resilience
+    normally_required: true
+    default_evaluation: binary
+    scoreable_variant: availability_level
+    typical_evidence:
+      - SLA
+      - Availability report
+
+  - id: disaster-recovery
+    name: Disaster Recovery
+    category: resilience
+    normally_required: true
+    default_evaluation: binary
+    scoreable_variant: recovery_maturity
+    dependencies:
+      - backup
+      - incident-management
+    typical_evidence:
+      - Disaster recovery plan
+      - DR test report
+
+  - id: backup
+    name: Backup
+    category: resilience
+    normally_required: true
+    default_evaluation: binary
+    typical_evidence:
+      - Backup policy
+      - Restore test report
+
+  - id: authentication
+    name: Authentication
+    category: security
+    normally_required: true
+    default_evaluation: binary
+    typical_evidence:
+      - Technical documentation
+      - Identity integration guide
+
+  - id: authorization
+    name: Authorization
+    category: security
+    normally_required: true
+    default_evaluation: binary
+    dependencies:
+      - authentication
+    typical_evidence:
+      - Role model
+      - Technical documentation
+
+  - id: audit-logging
+    name: Audit Logging
+    category: security
+    normally_required: true
+    default_evaluation: binary
+    typical_evidence:
+      - Logging documentation
+      - Audit event list
+
+  - id: monitoring
+    name: Monitoring
+    category: operations
+    normally_required: true
+    default_evaluation: binary
+    scoreable_variant: observability_maturity
+    typical_evidence:
+      - Monitoring documentation
+      - Alerting process
+
+  - id: api-integration
+    name: API Integration
+    category: interoperability
+    normally_required: false
+    default_evaluation: binary
+    scoreable_variant: api_maturity
+    dependencies:
+      - authentication
+      - authorization
+      - audit-logging
+    typical_evidence:
+      - API documentation
+      - OpenAPI specification
+
+  - id: data-encryption
+    name: Data Encryption
+    category: security
+    normally_required: true
+    default_evaluation: binary
+    typical_evidence:
+      - Security architecture
+      - Encryption policy
+
+  - id: incident-management
+    name: Incident Management
+    category: operations
+    normally_required: true
+    default_evaluation: binary
+    scoreable_variant: incident_response_maturity
+    typical_evidence:
+      - Incident process
+      - SLA
+
+  - id: support
+    name: Support
+    category: service-management
+    normally_required: true
+    default_evaluation: binary
+    scoreable_variant: support_maturity
+    typical_evidence:
+      - Support model
+      - SLA
+
+  - id: maintainability
+    name: Maintainability
+    category: lifecycle
+    normally_required: true
+    default_evaluation: binary
+    typical_evidence:
+      - Maintenance process
+      - Release notes
+
+  - id: configuration-management
+    name: Configuration Management
+    category: operations
+    normally_required: true
+    default_evaluation: binary
+    typical_evidence:
+      - Configuration documentation
+      - Change process
+
+  - id: ai-governance
+    name: AI Governance
+    category: technology-ai
+    normally_required: false
+    default_evaluation: binary
+    scoreable_variant: ai_governance_maturity
+    typical_evidence:
+      - AI governance policy
+      - Model inventory
+      - Risk assessment
+
+  - id: data-isolation
+    name: Data Isolation
+    category: security
+    normally_required: false
+    default_evaluation: binary
+    typical_evidence:
+      - Architecture description
+      - Contractual commitment
+
+  - id: airport-messaging
+    name: Airport Messaging
+    category: aviation
+    normally_required: false
+    default_evaluation: binary
+    scoreable_variant: messaging_maturity
+    dependencies:
+      - api-integration
+      - monitoring
+      - audit-logging
+    typical_evidence:
+      - Interface specification
+      - Message handling documentation

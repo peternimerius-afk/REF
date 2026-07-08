@@ -1,0 +1,40 @@
+version: 0.1.0
+status: draft
+
+language:
+  default: en
+  supported:
+    - en
+    - sv
+
+word_limits:
+  binary_requirement: 20
+  scoreable_requirement: 35
+  evidence: 15
+  verifier_note: 40
+
+mandatory_language:
+  en: shall
+  sv: ska
+
+prohibited_words:
+  subjective:
+    - robust
+    - modern
+    - flexible
+    - user-friendly
+    - intuitive
+    - seamless
+    - future-proof
+    - comprehensive
+    - adequate
+    - sufficient
+    - efficient
+    - state-of-the-art
+    - best practice
+
+format:
+  one_sentence_requirement: true
+  no_explanatory_text_in_requirement: true
+  evidence_separate: true
+  verifier_notes_separate: true

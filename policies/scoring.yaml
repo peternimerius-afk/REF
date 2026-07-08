@@ -1,0 +1,32 @@
+version: 0.1.0
+status: draft
+
+evaluation:
+  default_method: binary
+  allowed_methods:
+    - binary
+    - score_1_4
+
+scoreable:
+  maximum_ratio: 0.25
+  preferred_ratio: 0.20
+  require_justification: true
+  require_objective_scale: true
+  require_mutually_exclusive_levels: true
+  require_evidence: true
+
+score_scale:
+  type: integer
+  min: 1
+  max: 4
+  interpretation:
+    4: Excellent measurable maturity or capability
+    3: Good measurable maturity or capability
+    2: Acceptable maturity above minimum baseline
+    1: Limited maturity or minimum acceptable level
+
+rules:
+  split_before_score: true
+  binary_for_legal_or_security_baseline: true
+  score_maturity_not_compliance: true
+  no_subjective_scoring_without_criteria: true
