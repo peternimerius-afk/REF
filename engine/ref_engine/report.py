@@ -12,14 +12,27 @@ def print_console_report(report: AnalysisReport, max_examples: int = 20) -> None
     print(f"Requirements detected: {report.requirements_detected}")
 
     print()
+    print("Lint findings")
+    print("-" * 60)
+
+    if report.lint_counts:
+        for code, count in sorted(report.lint_counts.items()):
+            print(f"{code:<8} {count}")
+    else:
+        print("None")
+
+    print()
     print("Examples")
     print("-" * 60)
 
     for requirement in report.requirements[:max_examples]:
         location = requirement.source.location
+        lint_codes = ", ".join(finding.code for finding in requirement.lint) or "none"
+
         print(f"{requirement.id}")
         print(f"Confidence: {requirement.confidence}")
         print(f"Reason:     {requirement.reason}")
+        print(f"Lint:       {lint_codes}")
         print(f"Location:   {location}")
-        print(requirement.text[:500])
+        print(requirement.text[:700])
         print("-" * 60)

@@ -2,7 +2,7 @@
 
 **Version:** 0.1.0-alpha
 
-Commit 0006A introduces a clean minimal Python engine.
+Commit 0006B improves the first real Excel test result.
 
 ## Implemented
 
@@ -10,12 +10,13 @@ Commit 0006A introduces a clean minimal Python engine.
 - Excel import
 - Word import
 - Markdown/Text import
-- Simple requirement detection
+- Conservative requirement detection
+- Noise filtering for Excel ID cells and section headings
+- Basic lint summary
 - Console report
 
 ## Not implemented yet
 
-- Linting
 - Capability mapping
 - JSON reports
 - Gap analysis
@@ -26,7 +27,5 @@ Commit 0006A introduces a clean minimal Python engine.
 
 ```powershell
 cd engine
-python -m pip install -e .
-python -m ref_engine.cli --help
-python -m ref_engine.cli analyze --input "..\path\to\requirements.xlsx"
+python -m ref_engine.cli analyze --input "..\AI.xlsx"
 ```

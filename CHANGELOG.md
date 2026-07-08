@@ -4,6 +4,14 @@ All notable changes to REF will be documented in this file.
 
 ## [0.1.0] - Draft
 
+### Added in Commit 0006B
+
+- Conservative Excel requirement detection.
+- Filtering for numeric ID cells and section headings.
+- Basic linter.
+- Lint summary in console report.
+- Detector and linter tests.
+
 ### Added in Commit 0006A
 
 - Clean Python engine alpha.
