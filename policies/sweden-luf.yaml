@@ -1,0 +1,32 @@
+policy:
+  id: sweden-luf
+  version: 0.1.0
+  extends: default
+  description: Policy profile for Swedish LUF procurements.
+
+procurement:
+  country: Sweden
+  regulation: LUF
+  principles:
+    - equal_treatment
+    - transparency
+    - proportionality
+    - non_discrimination
+    - mutual_recognition
+
+requirements:
+  mandatory_keyword: SHALL
+  prefer_binary: true
+  objective_evaluation_required: true
+  evidence_required: true
+
+Evaluation:
+  default_method: binary
+  scoreable_scale: "1-4"
+  maximum_scoreable_ratio: 0.25
+  require_scoreable_justification: true
+  scoring_levels_must_be_objective: true
+
+notes:
+  - "This policy is not legal advice."
+  - "Project teams must validate procurement decisions with appropriate legal/procurement expertise."

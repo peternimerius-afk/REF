@@ -1,0 +1,31 @@
+policy:
+  id: default
+  version: 0.1.0
+  description: Default REF policy.
+
+requirements:
+  mandatory_keyword: SHALL
+  maximum_words_binary: 20
+  maximum_words_scoreable: 30
+  split_multiple_obligations: true
+  separate_evidence: true
+  separate_explanation: true
+  allow_subjective_language: false
+
+Evaluation:
+  default_method: binary
+  scoreable_scale: "1-4"
+  maximum_scoreable_ratio: 0.25
+  require_scoreable_justification: true
+  split_before_scoring: true
+
+language:
+  default: English
+  preserve_source_language: false
+
+output:
+  include_original: true
+  include_lint: true
+  include_evidence: true
+  include_capability: true
+  include_rationale: true
