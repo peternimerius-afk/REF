@@ -1,21 +1,19 @@
-# Local project material
-projects/
-*.local.yaml
-*.local.yml
-
-# Confidential source documents
-*.docx
-*.xlsx
-*.xls
-*.pdf
-
-# Python/cache
-__pycache__/
-*.pyc
-.ipynb_checkpoints/
-
-# OS/editor
-.DS_Store
-Thumbs.db
 .vscode/
 .idea/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.venv/
+venv/
+dist/
+build/
+*.egg-info/
+*.tmp
+*.bak
+Thumbs.db
+Desktop.ini
+*.log
+*.json
+!tests/**/*.json

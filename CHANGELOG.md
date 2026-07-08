@@ -4,6 +4,18 @@ All notable changes to REF will be documented in this file.
 
 ## [0.1.0] - Draft
 
+### Added in Commit 0006
+
+- Python REF Engine Alpha.
+- CLI command for file analysis.
+- Importers for Excel, Word, Markdown, and text.
+- Basic classifier.
+- Basic linter.
+- Basic capability mapper.
+- Console and JSON reports.
+- Initial unit tests.
+- Engine alpha documentation.
+
 ### Added in Commit 0005
 
 - REF Compiler Specification.

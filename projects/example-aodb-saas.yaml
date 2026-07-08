@@ -1,0 +1,42 @@
+project:
+  name: example-airport-aodb-saas
+  language: en
+  description: Example configuration for an airport AODB SaaS procurement.
+
+procurement:
+  profile: sweden-luf
+  jurisdiction: sweden
+
+deployment:
+  model: saas
+
+industry:
+  - aviation
+
+solution:
+  - aodb
+
+technology:
+  - ai
+
+security:
+  classification: lis-2-3-3
+  profiles:
+    - default-security
+
+data:
+  personal_data: true
+  sensitive_data: false
+  critical_operations: true
+
+evaluation:
+  default_method: binary
+  maximum_scoreable_ratio: 0.20
+
+knowledge:
+  include:
+    - generic
+    - aviation
+    - technology/saas
+    - technology/ai
+  exclude: []

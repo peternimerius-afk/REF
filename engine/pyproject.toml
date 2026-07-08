@@ -1,0 +1,17 @@
+[project]
+name = "ref-engine"
+version = "0.1.0"
+description = "Executable alpha engine for the Requirements Engineering Framework"
+requires-python = ">=3.10"
+dependencies = [
+    "openpyxl>=3.1.0",
+    "python-docx>=1.1.0",
+    "PyYAML>=6.0.0"
+]
+
+[project.scripts]
+ref = "ref_engine.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["ref_engine*"]
