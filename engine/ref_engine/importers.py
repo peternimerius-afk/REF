@@ -1,62 +1,144 @@
 from __future__ import annotations
+
 from pathlib import Path
+
 from .models import ContentUnit, SourceLocation
-SUPPORTED_SUFFIXES = {".xlsx", ".docx", ".md", ".txt"}
+
 
 def import_file(path: str | Path) -> list[ContentUnit]:
-    p = Path(path)
-    suffix = p.suffix.lower()
+    file_path = Path(path)
+    suffix = file_path.suffix.lower()
+
     if suffix == ".xlsx":
-        return import_xlsx(p)
+        return import_xlsx(file_path)
     if suffix == ".docx":
-        return import_docx(p)
+        return import_docx(file_path)
     if suffix in {".md", ".txt"}:
-        return import_text(p)
-    raise ValueError(f"Unsupported file type: {suffix}. Supported: {sorted(SUPPORTED_SUFFIXES)}")
+        return import_text(file_path)
+
+    raise ValueError(
+        f"Unsupported file type: {suffix}. Supported file types: .xlsx, .docx, .md, .txt"
+    )
+
 
 def import_text(path: Path) -> list[ContentUnit]:
-    text = path.read_text(encoding="utf-8", errors="ignore")
-    units=[]
-    for idx,line in enumerate(text.splitlines(), start=1):
-        cleaned=line.strip()
-        if cleaned:
-            units.append(ContentUnit(f"TXT-{idx}", cleaned, SourceLocation(str(path), path.suffix.lower().lstrip('.'), {"line": idx}), "line"))
+    units: list[ContentUnit] = []
+
+    for line_number, line in enumerate(
+        path.read_text(encoding="utf-8", errors="ignore").splitlines(),
+        start=1,
+    ):
+        text = line.strip()
+        if not text:
+            continue
+
+        units.append(
+            ContentUnit(
+                id=f"TXT-{line_number}",
+                text=text,
+                source=SourceLocation(
+                    document=str(path),
+                    document_type=path.suffix.lower().lstrip("."),
+                    location={"line": line_number},
+                ),
+                kind="line",
+            )
+        )
+
     return units
+
 
 def import_docx(path: Path) -> list[ContentUnit]:
-    try:
-        from docx import Document
-    except ImportError as exc:
-        raise RuntimeError("python-docx is required for DOCX import.") from exc
-    doc=Document(str(path)); units=[]; counter=1
-    for idx,para in enumerate(doc.paragraphs, start=1):
-        text=para.text.strip()
-        if text:
-            units.append(ContentUnit(f"DOCX-P-{counter}", text, SourceLocation(str(path), "docx", {"paragraph": idx}), "paragraph")); counter+=1
-    for t_idx,table in enumerate(doc.tables, start=1):
-        for r_idx,row in enumerate(table.rows, start=1):
-            for c_idx,cell in enumerate(row.cells, start=1):
-                text=cell.text.strip()
-                if text:
-                    units.append(ContentUnit(f"DOCX-T-{t_idx}-{r_idx}-{c_idx}", text, SourceLocation(str(path), "docx", {"table": t_idx,"row": r_idx,"column": c_idx}), "table_cell"))
+    from docx import Document
+
+    doc = Document(str(path))
+    units: list[ContentUnit] = []
+
+    for paragraph_number, paragraph in enumerate(doc.paragraphs, start=1):
+        text = paragraph.text.strip()
+        if not text:
+            continue
+
+        units.append(
+            ContentUnit(
+                id=f"DOCX-P-{paragraph_number}",
+                text=text,
+                source=SourceLocation(
+                    document=str(path),
+                    document_type="docx",
+                    location={"paragraph": paragraph_number},
+                ),
+                kind="paragraph",
+            )
+        )
+
+    for table_number, table in enumerate(doc.tables, start=1):
+        for row_number, row in enumerate(table.rows, start=1):
+            for column_number, cell in enumerate(row.cells, start=1):
+                text = cell.text.strip()
+                if not text:
+                    continue
+
+                units.append(
+                    ContentUnit(
+                        id=f"DOCX-T-{table_number}-{row_number}-{column_number}",
+                        text=text,
+                        source=SourceLocation(
+                            document=str(path),
+                            document_type="docx",
+                            location={
+                                "table": table_number,
+                                "row": row_number,
+                                "column": column_number,
+                            },
+                        ),
+                        kind="table_cell",
+                    )
+                )
+
     return units
 
+
 def import_xlsx(path: Path) -> list[ContentUnit]:
-    try:
-        import openpyxl
-    except ImportError as exc:
-        raise RuntimeError("openpyxl is required for XLSX import.") from exc
-    wb=openpyxl.load_workbook(str(path), data_only=True)
-    units=[]
-    for ws in wb.worksheets:
-        headers={}
-        for row_idx,row in enumerate(ws.iter_rows(values_only=True), start=1):
-            values=["" if v is None else str(v).strip() for v in row]
-            if row_idx==1:
-                headers={i+1: val for i,val in enumerate(values) if val}
-            for col_idx,value in enumerate(values, start=1):
-                if not value or row_idx==1:
+    import openpyxl
+
+    workbook = openpyxl.load_workbook(str(path), data_only=True)
+    units: list[ContentUnit] = []
+
+    for worksheet in workbook.worksheets:
+        headers: dict[int, str] = {}
+
+        for row_number, row in enumerate(worksheet.iter_rows(values_only=True), start=1):
+            values = ["" if value is None else str(value).strip() for value in row]
+
+            if row_number == 1:
+                headers = {
+                    index + 1: value
+                    for index, value in enumerate(values)
+                    if value
+                }
+                continue
+
+            for column_number, value in enumerate(values, start=1):
+                if not value:
                     continue
-                header=headers.get(col_idx, f"Column {col_idx}")
-                units.append(ContentUnit(f"XLSX-{ws.title}-{row_idx}-{col_idx}", value, SourceLocation(str(path), "xlsx", {"worksheet": ws.title,"row": row_idx,"column": col_idx,"header": header}), "cell"))
+
+                units.append(
+                    ContentUnit(
+                        id=f"XLSX-{worksheet.title}-{row_number}-{column_number}",
+                        text=value,
+                        source=SourceLocation(
+                            document=str(path),
+                            document_type="xlsx",
+                            location={
+                                "worksheet": worksheet.title,
+                                "row": row_number,
+                                "column": column_number,
+                                "header": headers.get(column_number, f"Column {column_number}"),
+                            },
+                        ),
+                        kind="cell",
+                    )
+                )
+
     return units
