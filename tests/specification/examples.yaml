@@ -1,0 +1,51 @@
+version: 0.1.0
+status: draft
+
+tests:
+  - id: REG-001
+    name: Split API requirement
+    input:
+      text: The solution shall support REST APIs, OpenAPI documentation and webhook callbacks.
+    expected:
+      lint:
+        - RFP001
+      transformations:
+        - TR-001
+      outputs:
+        - text: The solution shall support REST APIs.
+          evaluation: binary
+          capability: api-integration
+        - text: OpenAPI documentation shall be provided.
+          evaluation: binary
+          capability: api-documentation
+        - text: The solution shall support webhook callbacks.
+          evaluation: binary
+          capability: webhook-callbacks
+
+  - id: REG-002
+    name: Move evidence from requirement
+    input:
+      text: The supplier shall provide documentation showing that audit logging is supported.
+    expected:
+      lint:
+        - RFP004
+      transformations:
+        - TR-002
+      outputs:
+        - text: Security-relevant events shall be audit logged.
+          evidence:
+            - Technical documentation
+          evaluation: binary
+          capability: audit-logging
+
+  - id: REG-003
+    name: Reject subjective support requirement
+    input:
+      text: The supplier shall provide excellent and flexible support.
+    expected:
+      lint:
+        - RFP002
+        - RFP003
+      transformations:
+        - TR-004
+      status: defer

@@ -1,0 +1,59 @@
+version: 0.1.0
+status: draft
+
+rules:
+  - id: TR-001
+    name: Split multiple obligations
+    trigger:
+      lint_code: RFP001
+    action:
+      type: split
+      reclassify_outputs: true
+      remap_outputs: true
+    constraints:
+      - preserve_procurement_intent
+      - one_obligation_per_output
+      - preserve_traceability
+
+  - id: TR-002
+    name: Move evidence out of requirement
+    trigger:
+      lint_code: RFP004
+    action:
+      type: move_to_evidence
+    constraints:
+      - preserve_evidence_text
+      - remove_evidence_from_requirement_text
+
+  - id: TR-003
+    name: Remove explanatory text
+    trigger:
+      lint_code: RFP005
+    action:
+      type: remove_explanation
+    constraints:
+      - preserve_scope_if_mandatory
+
+  - id: TR-004
+    name: Replace subjective wording
+    trigger:
+      lint_code: RFP002
+    action:
+      type: objective_rewrite
+    fallback:
+      type: defer
+      reason: objective_criterion_missing
+
+  - id: TR-005
+    name: Compress requirement
+    trigger:
+      lint_code: RFP008
+    action:
+      type: compress
+    preserve:
+      - actor
+      - obligation
+      - object
+      - threshold
+      - condition
+      - time_period

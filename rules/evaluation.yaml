@@ -1,0 +1,43 @@
+version: 0.1.0
+status: draft
+
+rules:
+  - id: EVAL-001
+    name: Binary by default
+    condition:
+      mandatory_baseline: true
+      objectively_verifiable: true
+    result:
+      method: binary
+
+  - id: EVAL-002
+    name: Score only measurable differentiation
+    condition:
+      suppliers_can_exceed_baseline: true
+      difference_is_objective: true
+      improves_supplier_selection: true
+    result:
+      method: score_1_4
+
+  - id: EVAL-003
+    name: Split before scoring
+    condition:
+      multiple_obligations: true
+    result:
+      action: split_before_evaluation
+
+  - id: EVAL-004
+    name: Score maturity not baseline
+    condition:
+      mandatory_baseline: true
+      maturity_differentiator: true
+    result:
+      method: baseline_plus_score
+
+  - id: EVAL-005
+    name: Enforce scoreable ratio
+    condition:
+      scoreable_ratio_exceeds_policy: true
+    result:
+      severity: warning
+      action: review_scoreable_requirements

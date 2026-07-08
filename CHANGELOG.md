@@ -4,22 +4,24 @@ All notable changes to REF will be documented in this file.
 
 ## [0.1.0] - Draft
 
+### Added in Commit 0005
+
+- REF Compiler Specification.
+- Transformation rules.
+- Evaluation rules.
+- Mapping rules.
+- Generation rules.
+- Gap rules.
+- Validation rules.
+- Machine-readable rule files.
+- Regression test specification and initial examples.
+- ADR 0006 for compiler rule families.
+- ADR 0007 for AI as assistant, not authority.
+
 ### Added in Commit 0004
 
 - Generic NFR Knowledge Pack package structure.
-- Twelve initial generic capability packages:
-  - Availability
-  - Backup
-  - Disaster Recovery
-  - Monitoring
-  - Audit Logging
-  - Authentication
-  - Authorization
-  - API Integration
-  - Encryption
-  - Configuration Management
-  - Support
-  - Maintainability
+- Twelve initial generic capability packages.
 - Generic capability index.
 - ADR 0005 for capability package structure.
 

@@ -1,0 +1,40 @@
+version: 0.1.0
+status: draft
+
+rules:
+  - id: GAP-001
+    name: Resolve expected capabilities
+    action:
+      type: union
+      sources:
+        - generic_baseline
+        - procurement_profile
+        - security_profile
+        - industry_pack
+        - solution_pack
+        - technology_pack
+        - project_configuration
+
+  - id: GAP-002
+    name: Covered capability
+    condition:
+      valid_requirement_exists: true
+    result:
+      coverage_state: covered
+
+  - id: GAP-003
+    name: Evidence-only capability
+    condition:
+      evidence_exists: true
+      valid_requirement_exists: false
+    result:
+      coverage_state: evidence_only
+
+  - id: GAP-004
+    name: Missing capability
+    condition:
+      expected: true
+      valid_requirement_exists: false
+      evidence_exists: false
+    result:
+      coverage_state: missing
