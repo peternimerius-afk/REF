@@ -1,0 +1,30 @@
+id: configuration-management
+name: Configuration Management
+group: generic
+category: operations
+version: 0.1.0
+status: draft
+
+purpose: >
+  Ensure that configuration is controlled, documented, traceable, and recoverable.
+
+default_evaluation: binary
+scoreable_variant: operations_maturity
+
+normally_required: true
+
+baseline_requirement: >
+  System configuration changes shall be traceable.
+
+typical_evidence:
+  - Configuration management process
+  - Change log example
+
+common_mistakes:
+  - Mixing configuration management with change management and release management.
+  - Using controlled configuration without defining traceability.
+  - Failing to require auditability.
+
+dependencies: []
+
+related_capabilities: []

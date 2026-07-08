@@ -1,0 +1,30 @@
+id: authorization
+name: Authorization
+group: generic
+category: security
+version: 0.1.0
+status: draft
+
+purpose: >
+  Ensure that authenticated users and systems have access only to authorized functions and data.
+
+default_evaluation: binary
+scoreable_variant: access_control_maturity
+
+normally_required: true
+
+baseline_requirement: >
+  The solution shall support role-based access control.
+
+typical_evidence:
+  - Role model
+  - Access control documentation
+
+common_mistakes:
+  - Combining authorization with authentication.
+  - Using flexible access control without objective criteria.
+  - Failing to distinguish roles, permissions, and segregation of duties.
+
+dependencies: []
+
+related_capabilities: []

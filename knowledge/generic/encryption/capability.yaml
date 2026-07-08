@@ -1,0 +1,30 @@
+id: encryption
+name: Encryption
+group: generic
+category: security
+version: 0.1.0
+status: draft
+
+purpose: >
+  Protect data confidentiality and integrity in storage and transmission.
+
+default_evaluation: binary
+scoreable_variant: security_maturity
+
+normally_required: true
+
+baseline_requirement: >
+  Data shall be encrypted in transit and at rest.
+
+typical_evidence:
+  - Security architecture
+  - Encryption policy
+
+common_mistakes:
+  - Using secure data handling instead of explicit encryption obligation.
+  - Combining encryption with key management and access control.
+  - Specifying algorithms unnecessarily unless mandated.
+
+dependencies: []
+
+related_capabilities: []

@@ -1,0 +1,22 @@
+version: 0.1.0
+status: draft
+
+generic_capabilities:
+  - availability
+  - backup
+  - disaster-recovery
+  - monitoring
+  - audit-logging
+  - authentication
+  - authorization
+  - api-integration
+  - encryption
+  - configuration-management
+  - support
+  - maintainability
+
+default_policy:
+  evaluation: binary
+  split_before_score: true
+  evidence_separate: true
+  maximum_scoreable_ratio: 0.25

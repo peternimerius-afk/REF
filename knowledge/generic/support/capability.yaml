@@ -1,0 +1,30 @@
+id: support
+name: Support
+group: generic
+category: service-management
+version: 0.1.0
+status: draft
+
+purpose: >
+  Ensure that supplier support meets operational needs.
+
+default_evaluation: binary
+scoreable_variant: support_maturity
+
+normally_required: true
+
+baseline_requirement: >
+  Supplier support shall be available during agreed service hours.
+
+typical_evidence:
+  - Support model
+  - SLA
+
+common_mistakes:
+  - Using high-quality support without measurable service levels.
+  - Combining response time, resolution time, escalation, and hours in one requirement.
+  - Scoring support without clear levels.
+
+dependencies: []
+
+related_capabilities: []

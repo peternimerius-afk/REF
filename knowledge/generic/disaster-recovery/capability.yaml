@@ -1,0 +1,31 @@
+id: disaster-recovery
+name: Disaster Recovery
+group: generic
+category: resilience
+version: 0.1.0
+status: draft
+
+purpose: >
+  Ensure that service can be restored after major incident or site/service failure.
+
+default_evaluation: binary
+scoreable_variant: recovery_maturity
+
+normally_required: true
+
+baseline_requirement: >
+  Guaranteed RTO for critical services shall not exceed {rto}.
+
+typical_evidence:
+  - Disaster recovery plan
+  - DR test report
+  - SLA
+
+common_mistakes:
+  - Combining RTO, RPO, DR testing, historical recovery, and incident definitions in one requirement.
+  - Scoring DR without objective recovery levels.
+  - Failing to distinguish DR from backup.
+
+dependencies: []
+
+related_capabilities: []

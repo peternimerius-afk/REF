@@ -1,0 +1,31 @@
+id: audit-logging
+name: Audit Logging
+group: generic
+category: security
+version: 0.1.0
+status: draft
+
+purpose: >
+  Ensure that security-relevant and operationally relevant events can be traced.
+
+default_evaluation: binary
+scoreable_variant: logging_maturity
+
+normally_required: true
+
+baseline_requirement: >
+  Security-relevant events shall be audit logged.
+
+typical_evidence:
+  - Logging documentation
+  - Audit event list
+  - Sample log export
+
+common_mistakes:
+  - Mixing audit logging with monitoring.
+  - Not specifying retention or event types where required.
+  - Embedding evidence requests in the requirement.
+
+dependencies: []
+
+related_capabilities: []

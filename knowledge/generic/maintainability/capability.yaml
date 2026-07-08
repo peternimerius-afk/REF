@@ -1,0 +1,31 @@
+id: maintainability
+name: Maintainability
+group: generic
+category: lifecycle
+version: 0.1.0
+status: draft
+
+purpose: >
+  Ensure that the solution can be maintained, patched, upgraded, and supported over time.
+
+default_evaluation: binary
+scoreable_variant: lifecycle_maturity
+
+normally_required: true
+
+baseline_requirement: >
+  The supplier shall provide a documented maintenance process.
+
+typical_evidence:
+  - Maintenance process
+  - Release notes
+  - Patch policy
+
+common_mistakes:
+  - Combining patching, upgrades, support lifecycle, and release notes in one requirement.
+  - Using future-proof or modern maintainability wording.
+  - Failing to separate evidence from obligation.
+
+dependencies: []
+
+related_capabilities: []

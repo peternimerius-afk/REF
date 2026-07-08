@@ -1,0 +1,31 @@
+id: api-integration
+name: API Integration
+group: generic
+category: interoperability
+version: 0.1.0
+status: draft
+
+purpose: >
+  Ensure that the solution can exchange data through documented machine-readable interfaces.
+
+default_evaluation: binary
+scoreable_variant: api_maturity
+
+normally_required: true
+
+baseline_requirement: >
+  The solution shall provide documented APIs for integration.
+
+typical_evidence:
+  - API documentation
+  - OpenAPI specification
+  - Integration guide
+
+common_mistakes:
+  - Combining REST, OpenAPI, webhooks, SDKs, sandbox, and versioning in one requirement.
+  - Scoring individual API features instead of API maturity.
+  - Treating documentation as capability coverage.
+
+dependencies: []
+
+related_capabilities: []

@@ -1,0 +1,30 @@
+id: backup
+name: Backup
+group: generic
+category: resilience
+version: 0.1.0
+status: draft
+
+purpose: >
+  Ensure that data can be recovered from backup after loss, corruption, or operational failure.
+
+default_evaluation: binary
+scoreable_variant: backup_maturity
+
+normally_required: true
+
+baseline_requirement: >
+  Backup shall be performed at least daily.
+
+typical_evidence:
+  - Backup policy
+  - Restore test report
+
+common_mistakes:
+  - Mixing backup frequency, retention, restore testing, and RPO in one requirement.
+  - Requesting description of backup process as the requirement.
+  - Failing to require restore verification.
+
+dependencies: []
+
+related_capabilities: []

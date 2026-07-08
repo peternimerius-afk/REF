@@ -1,0 +1,30 @@
+id: availability
+name: Availability
+group: generic
+category: resilience
+version: 0.1.0
+status: draft
+
+purpose: >
+  Ensure that the service is available at the minimum level required for business operation.
+
+default_evaluation: binary
+scoreable_variant: availability_level
+
+normally_required: true
+
+baseline_requirement: >
+  Monthly production availability shall be at least {target}.
+
+typical_evidence:
+  - SLA
+  - Availability reports
+
+common_mistakes:
+  - Combining availability target, maintenance windows, evidence, and service credits in one requirement.
+  - Using subjective wording such as high availability without a numeric target.
+  - Embedding historical availability evidence in the requirement text.
+
+dependencies: []
+
+related_capabilities: []

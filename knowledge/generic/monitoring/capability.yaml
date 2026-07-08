@@ -1,0 +1,30 @@
+id: monitoring
+name: Monitoring
+group: generic
+category: operations
+version: 0.1.0
+status: draft
+
+purpose: >
+  Ensure that service health, integration failures, and operational events are detected and acted upon.
+
+default_evaluation: binary
+scoreable_variant: observability_maturity
+
+normally_required: true
+
+baseline_requirement: >
+  The solution shall monitor service availability and critical integrations.
+
+typical_evidence:
+  - Monitoring documentation
+  - Alerting process
+
+common_mistakes:
+  - Using robust monitoring without defining monitored events.
+  - Combining monitoring, alerting, reporting, and incident response.
+  - Treating dashboards as sufficient monitoring.
+
+dependencies: []
+
+related_capabilities: []

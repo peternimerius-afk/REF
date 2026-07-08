@@ -1,0 +1,30 @@
+id: authentication
+name: Authentication
+group: generic
+category: security
+version: 0.1.0
+status: draft
+
+purpose: >
+  Ensure that users and systems are securely identified before access is granted.
+
+default_evaluation: binary
+scoreable_variant: identity_maturity
+
+normally_required: true
+
+baseline_requirement: >
+  The solution shall support federated authentication.
+
+typical_evidence:
+  - Identity integration guide
+  - Technical documentation
+
+common_mistakes:
+  - Combining authentication and authorization.
+  - Requiring a specific identity provider without justification.
+  - Using secure login without defining the mechanism.
+
+dependencies: []
+
+related_capabilities: []
