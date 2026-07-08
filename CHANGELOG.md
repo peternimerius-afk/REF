@@ -1,19 +1,34 @@
 # Changelog
 
-All notable changes to REF will be documented here.
+All notable changes to REF will be documented in this file.
 
-## 0.1.0 - Draft foundation
+## [0.1.0] - Draft
 
-Initial repository foundation.
+### Added in Commit 0003
 
-Added:
+- Requirement Object specification.
+- Content classification model.
+- Capability mapping rules.
+- Gap analysis model.
+- Conceptual schemas for Requirement Object and Project Configuration.
+- Example AODB SaaS project configuration.
+- Import pipeline documentation.
+- Architecture Decision Records.
 
-- Core manifesto.
-- Engineering principles.
-- Evaluation strategy principles.
-- Workflow definition.
-- Glossary.
-- Default and Sweden LUF policies.
+### Added in Commit 0002
+
+- Lint rules.
+- Workflow.
+- Quality rubric.
+- Conceptual schemas.
 - Initial capability catalog.
-- Generic, AI, SaaS and aviation knowledge pack stubs with usable guidance.
-- Requirement output templates.
+- Initial templates.
+- Default scoring and style policies.
+
+### Added in Commit 0001
+
+- Initial REF foundation.
+- Core engineering principles.
+- Evaluation strategy.
+- Basic policies.
+- Initial documentation structure.

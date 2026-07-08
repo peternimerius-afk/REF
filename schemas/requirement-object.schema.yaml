@@ -1,0 +1,114 @@
+version: 0.1.0
+status: draft
+type: object
+name: RequirementObject
+
+required:
+  - id
+  - source
+  - classification
+
+fields:
+  id:
+    type: string
+    description: Stable requirement identifier.
+  title:
+    type: string
+    required: false
+  status:
+    type: enum
+    values:
+      - imported
+      - classified
+      - mapped
+      - needs_split
+      - needs_rewrite
+      - rejected
+      - normalized
+      - generated
+      - approved
+      - exported
+
+  source:
+    type: object
+    required:
+      - original_text
+    fields:
+      document_id: string
+      document_name: string
+      document_type: string
+      location: object
+      original_text: string
+
+  classification:
+    type: object
+    required:
+      - primary
+      - confidence
+    fields:
+      primary:
+        type: enum
+        values:
+          - requirement
+          - evidence
+          - evaluation
+          - verification
+          - background
+          - scope
+          - assumption
+          - question
+          - contract
+          - comment
+          - ignore
+      confidence: number
+      secondary: array
+
+  capability_mapping:
+    type: object
+    fields:
+      primary: object
+      secondary: array
+      dependencies: array
+
+  engineering:
+    type: object
+    fields:
+      quality_score: number
+      status: string
+      lint: array
+
+  evaluation:
+    type: object
+    fields:
+      method:
+        type: enum
+        values:
+          - binary
+          - score_1_4
+          - baseline_plus_score
+          - reject
+          - defer
+      rationale: string
+      scoreable_candidate: boolean
+
+  normalized:
+    type: object
+    fields:
+      requirements: array
+
+  evidence:
+    type: object
+    fields:
+      requested: array
+
+  verification:
+    type: object
+    fields:
+      method: string
+      verifier_notes: array
+
+  traceability:
+    type: object
+    fields:
+      generated_from: array
+      references: array

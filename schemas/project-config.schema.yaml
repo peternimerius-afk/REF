@@ -1,0 +1,67 @@
+version: 0.1.0
+status: draft
+type: object
+name: ProjectConfiguration
+
+fields:
+  project:
+    type: object
+    fields:
+      name: string
+      language: string
+      description: string
+
+  procurement:
+    type: object
+    fields:
+      profile: string
+      jurisdiction: string
+
+  deployment:
+    type: object
+    fields:
+      model:
+        type: enum
+        values:
+          - saas
+          - on_prem
+          - hybrid
+          - managed_service
+          - unknown
+
+  industry:
+    type: array
+    items: string
+
+  solution:
+    type: array
+    items: string
+
+  technology:
+    type: array
+    items: string
+
+  security:
+    type: object
+    fields:
+      classification: string
+      profiles: array
+
+  data:
+    type: object
+    fields:
+      personal_data: boolean
+      sensitive_data: boolean
+      critical_operations: boolean
+
+  evaluation:
+    type: object
+    fields:
+      maximum_scoreable_ratio: number
+      default_method: string
+
+  knowledge:
+    type: object
+    fields:
+      include: array
+      exclude: array
